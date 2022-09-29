@@ -30,7 +30,7 @@ export default function login(req, res) {
     const secret = process.env.JWT_SECRET;
     const token = jwt.sign(
       {
-        username: foundUser.username,
+        username,
         isAdmin: foundUser.isAdmin,
       },
       secret,
