@@ -21,11 +21,11 @@ export default function roomIdMessageRoute(req, res) {
     const rooms = readChatRoomsDB();
 
     //check if roomId exist
-    const rommIDX = rooms.findIndex((x) => x.roomId === roomId);
-    if (rommIDX === -1) {
+    const rommIDX = rooms.find((x) => x.roomId === roomId);
+    if (!rommIDX) {
       return res.status(404).json({ ok: false, message: "Invalid room ID" });
     }
-    return res.json({ ok: true, messages: rooms[rommIDX].messages });
+    return res.json({ ok: true, messages: rommIDX.messages });
 
     //find room and return
     //...
